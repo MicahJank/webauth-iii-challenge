@@ -4,6 +4,8 @@ const cors = require('cors');
 
 const jwt = require('jsonwebtoken');
 
+const { jwtSecret } = require('../config/secrets.js')
+
 const apiRouter = require('./apiRouter.js');
 
 const server = express();
@@ -22,23 +24,22 @@ server.get('/', (req, res) => {
 
 
 
-server.get('/token', (req, res) => {
-    const tokenSecret = process.env.JWT_SECRET || 'wethotiwasatoad';
-    
-    const payload = {
-        subject: 'thisuser',
-        userid: 'micah',
-    };
+// server.get('/token', (req, res) => {
 
-    // const secret = tokenSecret;
-    const options = {
-        expiresIn: '1h'
-    };
+//     const payload = {
+//         subject: 'thisuser',
+//         userid: 'micah',
+//     };
 
-    const token = jwt.sign(payload, tokenSecret, options);
+//     // const secret = tokenSecret;
+//     const options = {
+//         expiresIn: '1h'
+//     };
 
-    res.json(token);
-});
+//     const token = jwt.sign(payload, jwtSecret, options);
+
+//     res.json(token);
+// });
 
 
 module.exports = server;
