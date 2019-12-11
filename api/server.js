@@ -4,9 +4,7 @@ const cors = require('cors');
 
 const jwt = require('jsonwebtoken');
 
-// import routers
-
-
+const apiRouter = require('./apiRouter.js');
 
 const server = express();
 
@@ -15,8 +13,7 @@ server.use(express.json());
 server.use(cors());
 
 // use routers
-// server.use();
-// server.use();
+server.use('/api', apiRouter);
 
 server.get('/', (req, res) => {
     res.send("The serverrrr is aliiiiiveee with the souuuund of developerrrrrssss!");
