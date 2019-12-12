@@ -1,9 +1,7 @@
 const router = require('express').Router();
 const bcrypt = require('bcryptjs');
 
-const { genToken } = require('./generateToken-helper.js');
-
-const { jwtSecret } = require('../config/secrets.js');
+const genToken = require('./generateToken-helper.js');
 
 const Users = require('../users/users-model.js');
 
@@ -17,7 +15,7 @@ router.post('/', (req, res) => {
          .then(user => {
              if(user && bcrypt.compareSync(password, user.password)) {
                  const token = genToken(user);
-                 res.json({ username: user.username, token: token });
+                 res.json({ userId: user.id, token: token });
              } else {
                  res.status(401).json({ message: 'Invalid Credentials' });
              };

@@ -18,6 +18,7 @@ function find() {
   
 function add(user) {
     // const [id] = await db('users').insert(user);
+    // return findById(id);
     return db('users').insert(user)
                 .then(ids => {
                     const [id] = ids;

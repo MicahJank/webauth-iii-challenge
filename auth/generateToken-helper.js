@@ -1,10 +1,11 @@
 const jwt = require('jsonwebtoken');
+const { jwtSecret } = require('../config/secrets.js');
 
 function genToken(user) {
     const payload = {
-        userid: user.id,
+        id: user.id,
         username: user.username,
-        department: user.department
+        department: user.departments
     };
 
     const options = { expiresIn: '1h' };

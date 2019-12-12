@@ -12,13 +12,15 @@ router.get('/', restricted, (req, res) => {
     .catch(err => res.send(err));
 });
 
-//---Stretch----
-// router.get('/departmentB', restricted, checkDepartment('Department B'), (req, res) => {
-//   Users.find()
+
+// router.get('/', restricted, (req, res) => {
+//   const department = req.department;
+//   Users.findBy({ department })
 //     .then(users => {
 //       res.json(users);
 //     })
 //     .catch(err => res.send(err));
 // });
+
 
 module.exports = router;

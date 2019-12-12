@@ -1,9 +1,7 @@
 const router = require('express').Router();
 const bcrypt = require('bcryptjs');
 
-const { genToken } = require('./generateToken-helper.js');
-
-const { jwtSecret } = require('../config/secrets.js');
+const genToken  = require('./generateToken-helper.js');
 
 const Users = require('../users/users-model.js');
 
@@ -19,17 +17,18 @@ router.post('/', (req, res) => {
          .then(savedUser => {
              // generate the token for the user
              const token = genToken(savedUser);
+             console.log("TCL: token", token)
+             
 
              res.status(201).json({ created_user: savedUser, token: token });
          })
          .catch(err => {
+             console.log('user', user);
              res.status(500).json({
                  message: 'Error adding the user to the database', error: err
              });
          });
 });
-
-
 
 
 
