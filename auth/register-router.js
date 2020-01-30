@@ -17,13 +17,11 @@ router.post('/', (req, res) => {
          .then(savedUser => {
              // generate the token for the user
              const token = genToken(savedUser);
-             console.log("TCL: token", token)
              
 
              res.status(201).json({ created_user: savedUser, token: token });
          })
          .catch(err => {
-             console.log('user', user);
              res.status(500).json({
                  message: 'Error adding the user to the database', error: err
              });
