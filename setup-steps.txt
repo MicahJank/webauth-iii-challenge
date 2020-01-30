@@ -1,0 +1,6 @@
+
+1. npm init -y
+2. yarn
+3. yarn add express express-session cors knex sqlite3 knex-cleaner bcryptjs connect-session-knex jsonwebtoken
+4. add the script - "server": "nodemon index.js" - to your package.json file
+5. knex init
