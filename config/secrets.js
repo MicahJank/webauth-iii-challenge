@@ -1,3 +1,9 @@
+const jwtSecret = process.env.JWT_SECRET;
+
+if (!jwtSecret || !jwtSecret.trim()) {
+  throw new Error('JWT_SECRET must be set to a strong private value before starting the server.');
+}
+
 //----------------------------------------------------------------------------//
 // Just a module to centralize our JWT signing secret, so we don't end up with
 // bugs becaue of mismatched secrets on token signing and token verifying.
@@ -11,10 +17,9 @@
 // A token will not verify if the verification process doesn't have access to
 // the same "secret" key that was used to create the token to begin with. 
 //
-// Typically, in production, you wouldn't use a default secret, but in a dev
-// environment, it might make sense.
+// A private JWT_SECRET is required in development and production.
 //----------------------------------------------------------------------------//
 
 module.exports = {
-    jwtSecret: process.env.JWT_SECRET || 'wethotuwasatoad'
+    jwtSecret: jwtSecret
 }

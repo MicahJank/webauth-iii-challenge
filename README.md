@@ -44,3 +44,7 @@ Use **JSON Web Tokens** to keep users authenticated across requests.
   - the `/users` route should read the token from local storage and make a `GET` request to the `/api/users` route on the API attaching the token as the value of the `Authorization` header.
   - provide a button to `sign out` that will remove the token from local storage.
 - add any extra functionality to make the application more user friendly like showing a message and redirecting to `/signin` if an unauthenticated user tries to access the list of users in the `/users` route.
+
+### Required authentication configuration
+
+Set `JWT_SECRET` to a strong, unique private value before starting the server or running authentication tests. Startup fails if it is missing or blank. Copy `.env.example` only when using dotenv, or set the value in the shell or hosting secret store. Rotate any formerly shared signing key before reusing a deployment; this invalidates existing sessions.
